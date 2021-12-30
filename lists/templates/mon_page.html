@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{name}}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'links/css/mon_page.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'links/bootstrap/assets/dist/css/bootstrap.min.css' %}">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+          }
+    </style>
+</head>
+<body>
+<main>
+    <div class="container py-4">
+        <header class="pb-3 mb-4 border-bottom">
+            <a href="/" style="text-decoration:none; color:hotpink  ">
+                <!--class="d-flex align-items-center text-dark text-decoration-none"  # this belonged in the <a> tag-->
+                <img src="{% static 'links/images/svg/pokeball2.svg' %}" width="50"/>
+                <span class="fs-4"><mark>{{name}}</mark> {{article}} {{type}} type </span>
+            </a>
+            <div class="wrapper">
+                <div class="{{icon1}}">
+                    <img src="{% static iconPath1 %}"/>
+                </div>
+                <div class="{{icon2}}" style="visibility:{{type2Display}}">
+                    <img src="{% static iconPath2 %}"/>
+                </div>
+            </div>
+        </header>
+
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5" id="wkBox">
+                <h1 class="display-5 fw-bold" style="color:black">super effective</h1>
+                <p class="col-md-8 fs-4">
+                    <!-- django template filter used to color each pokémon type-->
+                    {% for item in wkList %}
+                    {% if item == lastItemWk and lenWk > 1 %}
+                    and <mark class="{{item}}">{{item}}</mark>
+                    {% elif lenWk > 2 %}
+                    <mark class="{{item}}">{{item}}</mark>,
+                    {% else %}
+                    <mark class="{{item}}">{{item}}</mark>
+                    {% endif %}
+                    {% endfor %}
+                    type moves are super effective against this mon.
+                </p>
+                <!--                       <button class="btn btn-primary btn-lg" type="button"">Example button</button>-->
+                <div class="wrapper2">
+                    <!-- django template filter used to display icons of types in wkList-->
+                    {% for item in wkList %}
+                    <div class="icon {{item}}">
+                        <img src="{% static itemPath|add:"links/images/svg/"|add:item|add:".svg" %}">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-md-stretch">
+            <div class="col-md-6">
+                <div class="h-100 p-5 text-white bg-dark rounded-3">
+                    <h2>not very effective</h2>
+                    <p> {{type}} moves are not very effective against
+                        {% for item in notEffList %}
+                        {% if item == lastItemNotEff and lenNotEff > 1 %}
+                        and <mark class="{{item}}">{{item}}</mark>
+                        {% elif lenNotEff > 2 %}
+                        <mark class="{{item}}">{{item}}</mark>,
+                        {% else %}
+                        <mark class="{{item}}">{{item}}</mark>
+                        {% endif %}
+                        {% endfor %}
+                        types.
+                    </p>
+                    <!--                    <button class="btn btn-outline-light" type="button">Example button</button>-->
+                <div class="wrapper2">
+                    {% for item in notEffList %}
+                    <div class="icon {{item}}">
+                        <img src="{% static itemPath|add:"links/images/svg/"|add:item|add:".svg" %}">
+                    </div>
+                    {% endfor %}
+                </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="h-100 p-5 bg-light border rounded-3">
+                    <h2>no effect</h2>
+                    <p>
+                        {% if lenNoEff == 0 %}
+                        {{type}} moves can affect all pokémon
+                        {% else %}
+                            this mon uses attacks which have no effect on
+                            {% for item in noEffList %}
+                            {% if item == lastItemNoEff and lenNoEff > 1 %}
+                            and <mark class="{{item}}">{{item}}</mark>
+                            {% elif lenNoEff > 2 %}
+                            <mark class="{{item}}">{{item}}</mark>,
+                            {% else %}
+                            <mark class="{{item}}">{{item}}</mark>
+                            {% endif %}
+                            {% endfor %}
+                            type pokémon.
+                        {% endif %}
+                    </p>
+                    <!--                    <button class="btn btn-outline-secondary" type="button">Example button</button>-->
+                <div class="wrapper2">
+                    {% for item in noEffList %}
+                    <div class="icon {{item}}">
+                        <img src="{% static itemPath|add:"links/images/svg/"|add:item|add:".svg" %}">
+                    </div>
+                    {% endfor %}
+                </div>
+                </div>
+            </div>
+        </div>
+        <div style="padding-top:2%">
+        </div>
+        <footer class="pt-3 mt-4 text-muted border-top">
+            &copy; 2021 rakesh pillai | rakeshpillai@vt.edu
+        </footer>
+    </div>
+</main>
+
+</body>
+</html>
