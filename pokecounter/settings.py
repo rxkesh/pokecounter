@@ -30,7 +30,7 @@ SECRET_KEY = 'g(!nls&_a@k1dp-!s8ywoyale+g=k_1tjagz9z4v9s^juy+b@@'
 # False if not in os.environ because of casting above
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://warm-island-38822.herokuapp.com/']
 
 
 # Application definition
