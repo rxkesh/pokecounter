@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # False if not in os.environ because of casting above
 DEBUG = False
 
-ALLOWED_HOSTS = ['warm-island-38822.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
