@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # Raises Django's ImproperlyConfigured
 # exception if SECRET_KEY not in os.environ
-SECRET_KEY = os.getenv('SECRET_KEY', 0)
+SECRET_KEY = 'g(!nls&_a@k1dp-!s8ywoyale+g=k_1tjagz9z4v9s^juy+b@@'
 # SECURITY WARNING: don't run with debug turned on in production!
 # False if not in os.environ because of casting above
 DEBUG = True
@@ -132,11 +132,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # extra security stuffs
 
-SECURE_SSL_REDIRECT = False
-
-SESSION_COOKIE_SECURE = True
-
-CSRF_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = False
+#
+# SESSION_COOKIE_SECURE = True
+#
+# CSRF_COOKIE_SECURE = True
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
