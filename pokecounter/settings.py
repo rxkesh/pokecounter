@@ -36,7 +36,9 @@ SECRET_KEY = env('SECRET_KEY')
 # False if not in os.environ because of casting above
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'https://warm-island-38822.herokuapp.com/',
+]
 
 
 # Application definition
