@@ -19,7 +19,7 @@ def pokemonAll(request):
 def pokemonBio(request, name):
     mon = pokemon()
     mon.name = name.lower()
-    found = 0;
+    found = 0
     with open('lists/pokedex.txt', 'r') as f:
         while found == 0:
             line = f.readline().lower()
@@ -41,8 +41,11 @@ def pokemonBio(request, name):
     else:
         typePrimary = mon.type
     lastItemInNoEffList = ""
+    lastItemInNotEffList = ""
     if len(getNoEffectDefense(mon.type)) != 0:
         lastItemInNoEffList = getNoEffectDefense(mon.type)[-1]
+    if len(getNotEffective(mon.type)) != 0:
+        lastItemInNotEffList = getNotEffective(mon.type)[-1]
     context = {
         "article": indef,
         "name": mon.name,
@@ -58,7 +61,7 @@ def pokemonBio(request, name):
         "notEffList": cleanse(getNotEffective((mon.type))),
         "noEffList": cleanse(getNoEffectDefense(mon.type)),
         "lastItemWk": getWeaknesses(mon.type)[-1],
-        "lastItemNotEff": getNotEffective(mon.type)[-1],
+        "lastItemNotEff": lastItemInNotEffList,
         "lastItemNoEff": lastItemInNoEffList,
         "lenWk": len(getWeaknesses(mon.type)),
         "lenNotEff": len(getNotEffective(mon.type)),
@@ -110,14 +113,14 @@ def getNotEffective(type):
     type1 = type.split("|")[0]
     type2 = type.split("|")[1]
     for t in weakAtkDict.get(type1):
-        if t in strongAtkDict.get(type2) or t in noneToList(noeffDict.get(type2)):
+        if t in noneToList(noeffDict.get(type2)):
             continue
         if t in weakAtkDict.get(type2):
             neff.append(t.upper())
         else:
             neff.append(t)
     for t in weakAtkDict.get(type2):
-        if t.upper() not in neff and t not in strongAtkDict.get(type1) and t not in noneToList(noeffDict.get(type1)):
+        if t.upper() not in neff and t not in noneToList(noeffDict.get(type1)):
             neff.append(t)
     return neff
 
