@@ -1,0 +1,41 @@
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            text-align: center;
+        }
+        body {
+            display: table;
+            text-align: center;
+            background-color: #414A4C ;
+            overflow:hidden;
+        }
+
+        .my-block {
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .my-header {
+            font-family: Ubuntu, sans-serif;
+            text-align:center;
+            color: white;
+        }
+        .my-input {
+            background-color: #414A4C;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            border-bottom-color: white;
+            color: white;
+            font-family: Ubuntu, sans-serif;
+            font-size: 200%;
+            width: 20%;
+            outline: none;
+            text-align: center;
+        }
+        .moving-image {
+            width: 700px;
+            height: 700px;
+        }

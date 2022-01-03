@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # False if not in os.environ because of casting above
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]', '.pokecounter.net']
 
 
 # Application definition
@@ -140,8 +140,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #
 # CSRF_COOKIE_SECURE = True
 
-# Simplified static file serving.
-# https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 
